@@ -16,7 +16,6 @@ $ npm install
 ## Running the app
 
 ```bash
-$
-nest start --watch
+$ nest start --watch
 ```
 

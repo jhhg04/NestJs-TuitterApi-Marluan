@@ -7,6 +7,10 @@ NestJs APi Tuits
 
 ![image](https://github.com/jhhg04/NestJs-TuitterApi-Marluan/assets/52834318/1784b5e9-90e4-453c-862b-b83cbf2e181c)
 
+![image](https://github.com/jhhg04/NestJs-TuitterApi-Marluan/assets/52834318/d5715d18-f3ef-4777-b80f-874ac0dfc6e8)
+
+![image](https://github.com/jhhg04/NestJs-TuitterApi-Marluan/assets/52834318/96a56b93-72d6-4131-9190-c085fcb90533)
+
 ## Installation
 
 ```bash

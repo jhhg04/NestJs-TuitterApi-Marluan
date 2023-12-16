@@ -1,41 +1,71 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { Repository } from 'typeorm';
+
+import { CreateTuitDto, PaginationQueryDto, UpdateTuitDto } from './dto';
 import { Tuit } from './tuit.entity';
-import { CreateTuitDto, UpdateTuitDto } from './dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { User } from '../users/entities';
 
 @Injectable()
 export class TuitsService {
-  private tuits: Tuit[] = [
-    {
-      id: '1',
-      message: 'Hello world from Nest.js',
-    },
-  ];
+  constructor(
+    @InjectRepository(Tuit) private readonly tuitRepository: Repository<Tuit>,
+    @InjectRepository(User) private readonly userRepository: Repository<User>,
+  ) {}
 
-  getTuits(): Tuit[] {
-    return this.tuits;
-  }
-
-  getTuit(id: string): Tuit {
-    return this.tuits.find((item) => item.id === id);
-  }
-
-  createTuit({ message }: CreateTuitDto) {
-    this.tuits.push({
-      id: (Math.floor(Math.random() * 2000) + 1).toString(),
-      message,
+  async getTuits({ limit, offset }: PaginationQueryDto): Promise<Tuit[]> {
+    return await this.tuitRepository.find({
+      relations: ['user'],
+      skip: offset,
+      take: limit,
     });
   }
 
-  updateTuit(id: string, { message }: UpdateTuitDto) {
-    const tuit: Tuit = this.getTuit(id);
-    tuit.message = message;
+  async getTuit(id: number): Promise<Tuit> {
+    const tuit: Tuit = await this.tuitRepository.findOne({
+      where: { id },
+      relations: ['user'],
+    });
+
+    if (!tuit) {
+      throw new NotFoundException('Resource not found');
+    }
     return tuit;
   }
 
-  removeTuit(id: string) {
-    const index = this.tuits.findIndex((tuit) => tuit.id === id);
-    if (index >= 0) {
-      this.tuits.splice(index, 1);
+  async createTuit({ message, user }: CreateTuitDto) {
+    const tuit: Tuit = this.tuitRepository.create({
+      message,
+      user,
+    });
+
+    return this.tuitRepository.save(tuit);
+  }
+
+  async updateTuit(id: number, { message }: UpdateTuitDto) {
+    const tuit: Tuit = await this.tuitRepository.preload({
+      id,
+      message,
+    });
+
+    if (!tuit) {
+      throw new NotFoundException('Resource not found');
     }
+
+    const updatedTuit = await this.tuitRepository.save(tuit);
+
+    return updatedTuit;
+  }
+
+  async removeTuit(id: number): Promise<void> {
+    const tuit: Tuit = await this.tuitRepository.findOne({
+      where: { id },
+    });
+
+    if (!tuit) {
+      throw new NotFoundException('Resource not found');
+    }
+
+    this.tuitRepository.remove(tuit);
   }
 }

@@ -14,7 +14,9 @@ import {
 import { TuitsService } from './tuits.service';
 import { Tuit } from './tuit.entity';
 import { CreateTuitDto, PaginationQueryDto, UpdateTuitDto } from './dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('tuits')
 @Controller('tuits')
 export class TuitsController {
   constructor(private readonly tuitService: TuitsService) {}

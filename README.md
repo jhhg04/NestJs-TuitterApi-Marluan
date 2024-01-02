@@ -3,8 +3,8 @@
 ```bash
 APi Tuits
 NestJs 
-MongoDb
-Mongoose
+Postgres
+TypeOrmModule
 ```
 ## API
 ### Swagger
@@ -33,29 +33,10 @@ back -> tuitsapi
 ```
 ## Run backend, in productsapi folder
 ```bash
-$ git clone https://github.com/jhhg04/NestJs-Mongo-Books-Jhhg.git
-$ cd NestJs-Mongo-Books-Jhhg
+$ git clone https://github.com/jhhg04/NestJs-TuitterApi-Marluan.git
+$ cd NestJs-TuitterApi-Marluan
 $ npm install
-$ npm run start:dev
-http://localhost:3000/api/books/
-```
-
-
-
-
-
-
-
-
-## Installation
-
-```bash
-$ npm install
-```
-
-## Running the app
-
-```bash
+$ run docker(postgresdb instance)
 $ nest start --watch
+http://localhost:3000/api/
 ```
-

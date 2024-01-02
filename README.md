@@ -38,5 +38,5 @@ $ cd NestJs-TuitterApi-Marluan
 $ npm install
 $ run docker(postgresdb instance)
 $ nest start --watch
-http://localhost:3000/api/
+http://localhost:3000/tuits/
 ```

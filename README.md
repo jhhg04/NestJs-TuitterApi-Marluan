@@ -11,9 +11,9 @@ Mongoose
 ```bash
 http://localhost:3000/api
 ```
-![image](https://github.com/jhhg04/NestJs-Mongo-Books-Jhhg/assets/52834318/616860bc-2738-4d67-ad33-4638fc1c203e)
-
-![image](https://github.com/jhhg04/NestJs-Mongo-Books-Jhhg/assets/52834318/dbee286b-21d9-40b4-a93c-690fabe711fa)
+![image](https://github.com/jhhg04/NestJs-TuitterApi-Marluan/assets/52834318/81cbdd12-e4a6-4841-8829-b7b8f26d0275)
+![image](https://github.com/jhhg04/NestJs-TuitterApi-Marluan/assets/52834318/092de384-ee7a-43fa-9002-41b544b9d86a)
+![image](https://github.com/jhhg04/NestJs-TuitterApi-Marluan/assets/52834318/15d22657-1d7e-40bc-85f8-d0bbe4b95641)
 
 ### Get
 ![image](https://github.com/jhhg04/NestJs-TuitterApi-Marluan/assets/52834318/fe3219aa-208b-403e-81e9-d119fc03a5a2)
